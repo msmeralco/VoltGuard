@@ -69,6 +69,7 @@ export default function NotificationListener({ onNewNotification }) {
   const [notifications, setNotifications] = useState([]);
   const [bannerNotification, setBannerNotification] = useState(null);
   const socketRef = useRef();
+  const receivedNotificationIds = useRef(new Set()); // Track received notification IDs
 
   useEffect(() => {
     socketRef.current = io("http://localhost:8000", {
@@ -81,7 +82,14 @@ export default function NotificationListener({ onNewNotification }) {
     });
 
     socketRef.current.on("notification", (notification) => {
+      // Prevent duplicate notifications
+      if (receivedNotificationIds.current.has(notification.id)) {
+        console.log("Duplicate notification ignored:", notification.id);
+        return;
+      }
+
       console.log("New notification:", notification);
+      receivedNotificationIds.current.add(notification.id);
       
       // Add to notifications list
       setNotifications((prev) => [notification, ...prev]);
