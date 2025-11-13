@@ -18,20 +18,11 @@ export default function Dashboard() {
   ]
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#001f3f] flex items-center justify-center p-4">
       {/* Mobile Phone Container */}
       <div className="w-full max-w-sm relative">
         {/* Phone Frame */}
         <div className="bg-white rounded-3xl shadow-2xl border-8 border-gray-200 overflow-hidden">
-          {/* Status Bar */}
-          <div className="bg-primary px-6 py-2 text-xs text-white flex justify-between items-center">
-            <span>9:41</span>
-            <div className="flex gap-1">
-              <div className="w-1 h-1 bg-white rounded-full" />
-              <div className="w-1 h-1 bg-white rounded-full" />
-              <div className="w-1 h-1 bg-white rounded-full" />
-            </div>
-          </div>
 
           {/* Dashboard Header with Logo and Notification */}
           <div className="bg-white px-6 py-4 flex items-center justify-center border-b border-gray-200">
@@ -43,23 +34,23 @@ export default function Dashboard() {
             <div className="grid grid-cols-2 gap-4">
               {/* Streaks Card */}
               <button onClick={() => setActiveModal("streaks")} className="w-full text-left focus:outline-none">
-                <Card className="border-2 border-primary hover:shadow-lg transition-all cursor-pointer bg-white shadow-md">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-xs text-primary">Streaks</CardTitle>
+                <Card className="border-2 border-primary hover:shadow-lg transition-all cursor-pointer bg-white shadow-md gap-2 h-full">
+                  <CardHeader className="pb-0">
+                    <CardTitle className="text-base text-primary">Streaks</CardTitle>
                   </CardHeader>
                   <CardContent className="flex items-center justify-center h-16 pb-2">
                     <div className="text-center">
-                      <p className="text-3xl font-bold text-primary">12</p>
-                      <p className="text-xs text-gray-600">days</p>
+                      <p className="text-5xl font-bold text-primary">12</p>
+                      <p className="text-base text-gray-600">days</p>
                     </div>
                   </CardContent>
                 </Card>
               </button>
 
               <button onClick={() => setActiveModal("camera")} className="w-full text-left focus:outline-none">
-                <Card className="border-2 border-primary hover:shadow-lg transition-all cursor-pointer bg-white shadow-md">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-xs text-primary">System (Camera)</CardTitle>
+                <Card className="border-2 border-primary hover:shadow-lg transition-all cursor-pointer bg-white shadow-md gap-2 h-full">
+                  <CardHeader className="pb-0">
+                    <CardTitle className="text-base text-primary">System</CardTitle>
                   </CardHeader>
                   <CardContent className="flex items-center justify-center h-16 pb-2">
                     <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,46 +68,41 @@ export default function Dashboard() {
 
             {/* Alerts Card */}
             <button onClick={() => setActiveModal("alerts")} className="w-full text-left focus:outline-none">
-              <Card className="border-2 border-primary hover:shadow-lg transition-all cursor-pointer bg-white shadow-md">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-sm text-primary">Alert Pings (Logs)</CardTitle>
+              <Card className="border-2 border-primary hover:shadow-lg transition-all cursor-pointer bg-white shadow-md gap-3">
+                <CardHeader className="pb-0">
+                  <CardTitle className="text-lg text-primary">Alert Pings (Logs)</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <p className="text-xs font-semibold text-primary">High Usage Detected</p>
-                    <p className="text-xs text-gray-600 mt-1">Camera 3 • 2:45 PM</p>
+                  <div className="bg-destructive/10 border-2 border-destructive/50 p-3 rounded-lg">
+                    <p className="text-base font-semibold text-destructive">High Usage Detected</p>
+                    <p className="text-base text-gray-600 mt-1">Camera 3 • 2:45 PM</p>
                   </div>
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <p className="text-xs font-semibold text-primary">Device Offline</p>
-                    <p className="text-xs text-gray-600 mt-1">Camera 5 • 1:30 PM</p>
+                  <div className="bg-blue-500/10 border-2 border-blue-500/50 p-3 rounded-lg">
+                    <p className="text-base font-semibold text-blue-500">Device Offline</p>
+                    <p className="text-base text-gray-600 mt-1">Camera 5 • 1:30 PM</p>
                   </div>
-                  <div className="text-xs text-secondary font-semibold">3 Active Alerts</div>
+                  <div className="text-base text-secondary font-semibold">3 Active Alerts</div>
                 </CardContent>
               </Card>
             </button>
 
             {/* Analytics Card */}
             <button onClick={() => setActiveModal("analytics")} className="w-full text-left focus:outline-none pb-4">
-              <Card className="border-2 border-secondary hover:shadow-lg transition-all cursor-pointer bg-white h-64 shadow-md">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-sm text-secondary">Analytics</CardTitle>
+              <Card className="border-2 border-secondary hover:shadow-lg transition-all cursor-pointer bg-white h-64 shadow-md gap-3">
+                <CardHeader className="pb-0">
+                  <CardTitle className="text-lg text-secondary">Analytics</CardTitle>
                 </CardHeader>
                 <CardContent className="h-full flex flex-col">
                   <div className="flex-1 flex items-center justify-center">
                     <div className="text-center">
-                      <p className="text-3xl font-bold text-primary">320</p>
-                      <p className="text-xs text-gray-600 mt-2">kWh This Month</p>
-                      <p className="text-xs text-secondary font-semibold mt-2">↓ 8% from last month</p>
+                      <p className="text-5xl font-bold text-primary">320</p>
+                      <p className="text-base text-gray-600 mt-2">kWh This Month</p>
+                      <p className="text-base text-secondary font-semibold mt-2">↓ 8% from last month</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </button>
-          </div>
-
-          {/* Home Indicator */}
-          <div className="bg-primary h-6 flex items-center justify-center">
-            <div className="w-32 h-1 bg-white/30 rounded-full" />
           </div>
         </div>
 
@@ -133,24 +119,24 @@ export default function Dashboard() {
         {showChatbot && (
           <div className="absolute bottom-24 right-8 w-64 bg-white rounded-lg shadow-xl border border-gray-200 p-4 z-50">
             <div className="flex justify-between items-center mb-3 pb-3 border-b border-gray-200">
-              <h3 className="text-sm font-bold text-primary">Energy Assistant</h3>
-              <button onClick={() => setShowChatbot(false)} className="text-gray-500 hover:text-primary text-lg">
+              <h3 className="text-lg font-bold text-primary">Energy Assistant</h3>
+              <button onClick={() => setShowChatbot(false)} className="text-gray-500 hover:text-primary text-2xl">
                 ×
               </button>
             </div>
             <div className="space-y-3 max-h-64 overflow-y-auto">
               <div className="bg-primary/10 p-3 rounded-lg">
-                <p className="text-xs text-primary font-semibold">Assistant</p>
-                <p className="text-xs text-gray-700 mt-1">How can I help you save energy today?</p>
+                <p className="text-base text-primary font-semibold">Assistant</p>
+                <p className="text-base text-gray-700 mt-1">How can I help you save energy today?</p>
               </div>
               <div className="bg-secondary/10 p-3 rounded-lg ml-auto w-fit">
-                <p className="text-xs text-secondary">What's my status?</p>
+                <p className="text-base text-secondary">What's my status?</p>
               </div>
             </div>
             <input
               type="text"
               placeholder="Type a message..."
-              className="w-full mt-3 px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full mt-3 px-3 py-2 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
         )}
