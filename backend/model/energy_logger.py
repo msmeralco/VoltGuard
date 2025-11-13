@@ -5,8 +5,11 @@ from datetime import datetime, timezone
 import redis
 import os
 
-POWER_RATINGS = {"laptop": 0.05, "lamp": 0.01, "tv": 0.1}
-COST_PER_KWH = 0.4  # PHP per kWh
+POWER_RATINGS = {"lamp": 0.032, "screen": 0.03}
+COST_PER_HOUR = {
+    "lamp": 0.35,
+    "screen": 0.33
+}
 
 # Store all waste events for one "absence session"
 waste_session_records = []
@@ -56,7 +59,7 @@ def log_waste_end(device, start_time, end_time):
     duration = float(end_time) - float(start_time)
     duration_hours = duration / 3600
     kwh_wasted = POWER_RATINGS.get(device, 0.05) * duration_hours
-    est_cost = kwh_wasted * COST_PER_KWH
+    est_cost = kwh_wasted * COST_PER_HOUR.get(device, 0.4)
 
     data = {
         "name": device,

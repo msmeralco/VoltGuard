@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 import energy_logger as logger  # direct import ✅
 
 # --- Initialize model and globals ---
-model = YOLO("best.pt")
+model = YOLO("best_max.pt")
 camera = None
 
 POWER_RATINGS = {"laptop": 0.05, "lamp": 0.01, "screen": 0.1}
