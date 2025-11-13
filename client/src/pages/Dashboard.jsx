@@ -22,19 +22,21 @@ export default function Dashboard() {
       {/* Mobile Phone Container */}
       <div className="w-full max-w-sm relative">
         {/* Phone Frame */}
-        <div className="bg-white rounded-3xl shadow-2xl border-8 border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-3xl shadow-2xl border-8 border-gray-200 overflow-hidden" style={{ backgroundColor: '#FFF8F0' }}>
 
           {/* Dashboard Header with Logo and Notification */}
-          <div className="bg-white/80 backdrop-blur-md px-6 py-4 flex items-center justify-center border-b border-gray-200">
+          <div className="bg-white/50 backdrop-blur-xl px-6 py-4 flex items-center justify-center border-b border-white/30 shadow-lg">
             <img src="/voltguard-logo.png" alt="VoltGuard" className="h-12 object-contain" />
           </div>
 
           {/* Main Content */}
-          <div className="px-6 py-6 space-y-4 overflow-y-auto max-h-[600px]">
+          <div 
+            className="px-6 py-6 space-y-4 overflow-y-auto max-h-[600px]"
+          >
             <div className="grid grid-cols-2 gap-4">
               {/* Streaks Card */}
               <button onClick={() => setActiveModal("streaks")} className="w-full text-left focus:outline-none">
-                <Card className="border-2 border-primary hover:shadow-lg transition-all cursor-pointer bg-white shadow-md gap-2 h-full">
+                <Card className="border border-white/20 hover:shadow-2xl transition-all cursor-pointer bg-white/40 backdrop-blur-md shadow-lg gap-2 h-full">
                   <CardHeader className="pb-0">
                     <CardTitle className="text-base text-primary">Streaks</CardTitle>
                   </CardHeader>
@@ -48,7 +50,7 @@ export default function Dashboard() {
               </button>
 
               <button onClick={() => setActiveModal("camera")} className="w-full text-left focus:outline-none">
-                <Card className="border-2 border-primary hover:shadow-lg transition-all cursor-pointer bg-white shadow-md gap-2 h-full">
+                <Card className="border border-white/20 hover:shadow-2xl transition-all cursor-pointer bg-white/40 backdrop-blur-md shadow-lg gap-2 h-full">
                   <CardHeader className="pb-0">
                     <CardTitle className="text-base text-primary">System</CardTitle>
                   </CardHeader>
@@ -68,7 +70,7 @@ export default function Dashboard() {
 
             {/* Alerts Card */}
             <button onClick={() => setActiveModal("alerts")} className="w-full text-left focus:outline-none">
-              <Card className="border-2 border-primary hover:shadow-lg transition-all cursor-pointer bg-white shadow-md gap-3">
+              <Card className="border border-white/20 hover:shadow-2xl transition-all cursor-pointer bg-white/40 backdrop-blur-md shadow-lg gap-3">
                 <CardHeader className="pb-0">
                   <CardTitle className="text-lg text-primary">Alert Pings (Logs)</CardTitle>
                 </CardHeader>
@@ -88,7 +90,7 @@ export default function Dashboard() {
 
             {/* Analytics Card */}
             <button onClick={() => setActiveModal("analytics")} className="w-full text-left focus:outline-none pb-4">
-              <Card className="border-2 border-secondary hover:shadow-lg transition-all cursor-pointer bg-white h-64 shadow-md gap-3">
+              <Card className="border border-white/20 hover:shadow-2xl transition-all cursor-pointer bg-white/40 backdrop-blur-md h-64 shadow-lg gap-3">
                 <CardHeader className="pb-0">
                   <CardTitle className="text-lg text-secondary">Analytics</CardTitle>
                 </CardHeader>
