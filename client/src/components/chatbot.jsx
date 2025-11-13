@@ -148,7 +148,7 @@ export function Chatbot() {
       <Button
         onClick={() => setShowChatbot(!showChatbot)}
         size="icon"
-        className={`fixed bottom-8 right-8 w-16 h-16 rounded-full shadow-2xl transition-all duration-300 border-4 ${
+        className={`absolute bottom-4 right-4 w-16 h-16 rounded-full shadow-2xl transition-all duration-300 border-4 ${
           isConnected ? "border-green-500 bg-white hover:bg-gray-50" : "border-red-500 bg-gray-100"
         } flex items-center justify-center z-50`}
       >
@@ -164,7 +164,7 @@ export function Chatbot() {
 
       {/* Chat Window */}
       {showChatbot && (
-        <div className="fixed bottom-28 right-8 w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col z-50 overflow-hidden animate-in slide-in-from-bottom-10 fade-in duration-300">
+        <div className="absolute bottom-24 right-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col z-50 overflow-hidden animate-in slide-in-from-bottom-10 fade-in duration-300">
           
           {/* Header */}
           <div className="bg-slate-900 p-4 flex justify-between items-center">
