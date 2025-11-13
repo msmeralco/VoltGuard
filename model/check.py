@@ -4,7 +4,7 @@ import numpy as np
 
 # --- Initialize model and camera ---
 model = YOLO("yolov8n.pt")  # or your custom-trained model
-camera = cv2.VideoCapture(0)  # 0 for webcam, or replace with video path
+#camera = cv2.VideoCapture(0)  # 0 for webcam, or replace with video path
 
 # COCO class index for laptop is 64
 
@@ -23,6 +23,7 @@ def analyze_light(crop):
 
 def main_loop():
     global stats
+    camera = cv2.VideoCapture(0)  # Initialize camera here
     while True:
         success, frame = camera.read()
         if not success:
@@ -67,15 +68,26 @@ def main_loop():
         cv2.putText(frame, f"Lights OFF: {stats['lights_off']}", (10, 60),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
-        # Show the frame
-        cv2.imshow("VoltGuard Live", frame)
 
-        # Exit on 'q' key
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+        # Encode frame and yield for streaming
+        ret, buffer = cv2.imencode('.jpg', frame)
+        if ret:
+            frame_bytes = buffer.tobytes()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+
+
+        # Show the frame (only when running standalone)
+        if __name__ == "__main__":
+            cv2.imshow("VoltGuard Live", frame)
+            # Exit on 'q' key
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
 
     camera.release()
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
     main_loop()
+    for _ in main_loop():
+        pass  # Generator yields frames and displays them
