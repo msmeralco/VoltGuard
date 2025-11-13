@@ -24,7 +24,7 @@ export function Chatbot() {
               ×
             </button>
           </div>
-          <div className="space-y-3 max-h-64 overflow-y-auto">
+          <div className="space-y-3 max-h-64 overflow-y-auto scrollbar-hide">
             <div className="bg-primary/10 p-3 rounded-lg">
               <p className="text-base text-primary font-semibold">Assistant</p>
               <p className="text-base text-gray-700 mt-1">How can I help you save energy today?</p>

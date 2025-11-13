@@ -49,7 +49,7 @@ export function AlertsModal({ onClose }) {
           </Button>
         </div>
 
-        <div className="p-6 space-y-3">
+        <div className="p-6 space-y-3 overflow-y-auto scrollbar-hide">
           {alerts.map((alert) => (
             <div
               key={alert.id}

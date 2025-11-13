@@ -37,7 +37,7 @@ export function CameraSystemModal({ onClose }) {
           </Button>
         </div>
 
-        <div className="p-6 space-y-6 overflow-y-auto flex-1">
+        <div className="p-6 space-y-6 overflow-y-auto flex-1 scrollbar-hide">
           {/* Live Feed Section */}
           <div>
             <p className="text-sm font-semibold text-foreground mb-3">Live Feed</p>

@@ -31,7 +31,7 @@ export function AnalyticsModal({ onClose }) {
           </Button>
         </div>
 
-        <div className="p-6 space-y-4 overflow-y-auto flex-1">
+        <div className="p-6 space-y-4 overflow-y-auto flex-1 scrollbar-hide">
           {/* Monthly Comparison */}
           <div className="bg-gradient-to-br from-accent/20 to-accent/10 border border-accent/30 rounded-2xl p-4">
             <p className="text-xs text-muted-foreground uppercase tracking-wide">This Month vs Last Month</p>
