@@ -16,17 +16,17 @@ export function StreaksModal({ onClose }) {
   const efficiency = getEfficiencyLevel(avgConsumption)
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-sm bg-card rounded-3xl max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
+      <Card className="w-full max-w-sm bg-card rounded-3xl max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="sticky top-0 bg-card border-b border-border px-6 py-4 flex items-center justify-between">
+        <div className="bg-card border-b border-border px-6 py-4 flex items-center justify-between flex-shrink-0">
           <h2 className="text-lg font-bold text-foreground">Streak History</h2>
           <Button variant="ghost" size="icon" onClick={onClose}>
             <X className="w-5 h-5" />
           </Button>
         </div>
 
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-4 overflow-y-auto flex-1">
           {/* Current Streak */}
           <div className="bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 rounded-2xl p-4">
             <p className="text-xs text-muted-foreground uppercase tracking-wide">Current Streak</p>
