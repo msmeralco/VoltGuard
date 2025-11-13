@@ -12,19 +12,19 @@ function getPetLevel(dailyUsageMinutes) {
       }
     case dailyUsageMinutes > 180: // More than 3 hours
       return { 
-        level: "Bad", 
+        level: "Low Activity", 
         color: "#FE8D00",
         image: "/images/energy-pet-bad.png"
       }
     case dailyUsageMinutes > 120: // 2-3 hours
       return { 
-        level: "Medium", 
+        level: "Steady", 
         color: "#FFC94A",
         image: "/images/energy-pet-medium.png"
       }
     default: // Less than 2 hours
       return { 
-        level: "Good", 
+        level: "High Performer", 
         color: "#245C94",
         image: "/images/energy-pet-good.png"
       }
