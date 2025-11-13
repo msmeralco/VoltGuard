@@ -1,0 +1,1 @@
+Run `generator.py` before using the db
