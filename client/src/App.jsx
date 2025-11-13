@@ -5,6 +5,8 @@ import Game from './pages/Game'
 import Settings from './pages/Settings'
 import System from './pages/System'
 import './styles/globals.css'
+import VideoFeed from './components/video-feed'
+import NotificationListener from './components/NotificationListener'
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <Route path="/game" element={<Game />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/system" element={<System />} />
+        <Route path="/test-video" element={<VideoFeed />} />
       </Routes>
     </Router>
   )

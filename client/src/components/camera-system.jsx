@@ -12,11 +12,6 @@ export function CameraSystem() {
     { id: "camera-4", name: "Garage", status: "active", resolution: "720p" },
   ]
 
-  const detectedDevices = [
-    { id: "dev-1", name: "Smart Light", type: "Lighting", confidence: 95 },
-    { id: "dev-2", name: "AC Unit", type: "HVAC", confidence: 88 },
-    { id: "dev-3", name: "Refrigerator", type: "Appliance", confidence: 92 },
-  ]
 
   return (
     <div className="w-full space-y-4">
@@ -44,18 +39,6 @@ export function CameraSystem() {
             </div>
           </div>
 
-          {/* Detected Devices Badges */}
-          <div>
-            <p className="text-xs font-semibold text-gray-600 mb-2">Detected Devices</p>
-            <div className="flex flex-wrap gap-2">
-              {detectedDevices.map((device) => (
-                <Badge key={device.id} variant="outline" className="text-xs bg-primary/10 text-primary border-primary">
-                  <span>{device.name}</span>
-                  <span className="ml-1 text-xs opacity-70">({device.confidence}%)</span>
-                </Badge>
-              ))}
-            </div>
-          </div>
 
           {/* Available Cameras */}
           <div>

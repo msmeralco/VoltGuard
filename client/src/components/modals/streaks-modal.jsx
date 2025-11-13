@@ -46,7 +46,7 @@ export function StreaksModal({ onClose }) {
           </Button>
         </div>
 
-        <div className="p-6 space-y-4 overflow-y-auto flex-1">
+        <div className="p-6 space-y-4 overflow-y-auto flex-1 scrollbar-hide">
           {/* Current Streak */}
           <div className="bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 rounded-2xl p-4">
             <p className="text-xs text-muted-foreground uppercase tracking-wide">Current Streak</p>
