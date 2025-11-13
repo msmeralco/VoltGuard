@@ -3,12 +3,11 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
 function getEfficiencyLevel(avgConsumption) {
-  if (avgConsumption === 0) return { level: "Starter / New", color: "bg-white" }
-  if (avgConsumption > 80) return { level: "Low Efficiency", color: "bg-orange-500" }
-  if (avgConsumption > 60)
-    return { level: "Medium Efficiency", color: "bg-gradient-to-br from-yellow-400 to-amber-500" }
-  if (avgConsumption > 40) return { level: "High Efficiency", color: "bg-blue-900" }
-  return { level: "Perfect Streak", color: "bg-blue-400" }
+  if (avgConsumption === 0) return { level: "Starter / New", color: "#FFFFFF" }
+  if (avgConsumption > 80) return { level: "Low Efficiency", color: "#FE8D00" }
+  if (avgConsumption > 60) return { level: "Medium Efficiency", color: "#FFC94A" }
+  if (avgConsumption > 40) return { level: "High Efficiency", color: "#245C94" }
+  return { level: "Perfect Streak", color: "#1C74D9" }
 }
 
 export function StreaksModal({ onClose }) {
@@ -16,8 +15,8 @@ export function StreaksModal({ onClose }) {
   const efficiency = getEfficiencyLevel(avgConsumption)
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-sm bg-card/95 backdrop-blur-md rounded-3xl max-h-[90vh] flex flex-col overflow-hidden">
+    <div className="fixed inset-0 flex items-center justify-center p-4 z-50 animate-in fade-in duration-300">
+      <Card className="w-full max-w-sm bg-card/95 backdrop-blur-md rounded-3xl max-h-[90vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-300">
         {/* Header */}
         <div className="bg-card border-b border-border px-6 py-4 flex items-center justify-between flex-shrink-0">
           <h2 className="text-lg font-bold text-foreground">Streak History</h2>
@@ -41,8 +40,12 @@ export function StreaksModal({ onClose }) {
               {[40, 35, 50, 30, 25, 45, 38].map((height, i) => (
                 <div
                   key={i}
-                  className="flex-1 bg-gradient-to-t from-primary to-primary/50 rounded-sm opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ height: `${height}%` }}
+                  className="flex-1 bg-gradient-to-t from-primary to-primary/50 rounded-sm opacity-70 hover:opacity-100 transition-all duration-500 animate-in slide-in-from-bottom"
+                  style={{ 
+                    height: `${height}%`,
+                    animationDelay: `${i * 100}ms`,
+                    animationFillMode: 'backwards'
+                  }}
                 />
               ))}
             </div>
@@ -54,11 +57,19 @@ export function StreaksModal({ onClose }) {
 
           <div>
             <p className="text-sm font-semibold text-foreground mb-3">Your Energy Pet</p>
-            <div className="relative rounded-2xl overflow-hidden border-2 border-border">
-              {/* Dynamic background based on efficiency */}
-              <div className={`${efficiency.color} p-8 flex flex-col items-center justify-center min-h-[280px]`}>
+            <div className="relative rounded-2xl overflow-hidden bg-white/40 backdrop-blur-md border border-white/30 shadow-lg">
+              {/* Glass background with radial gradient */}
+              <div className="p-8 flex flex-col items-center justify-center min-h-[280px] relative">
+                {/* Radial gradient behind pet */}
+                <div 
+                  className="absolute inset-0 opacity-60"
+                  style={{
+                    background: `radial-gradient(circle at center, ${efficiency.color} 0%, transparent 70%)`
+                  }}
+                />
+                
                 {/* Pet Image */}
-                <div className="w-48 h-48 relative mb-4">
+                <div className="w-48 h-48 relative mb-4 z-10">
                   <img
                     src="/images/energy-pet.png"
                     alt="Energy Pet"
@@ -67,7 +78,7 @@ export function StreaksModal({ onClose }) {
                 </div>
 
                 {/* Efficiency Level Label */}
-                <div className="bg-card/95 backdrop-blur-sm rounded-full px-6 py-2 border border-border shadow-lg">
+                <div className="bg-card/95 backdrop-blur-sm rounded-full px-6 py-2 border border-border shadow-lg z-10">
                   <p className="text-sm font-bold text-foreground text-center">{efficiency.level}</p>
                 </div>
               </div>

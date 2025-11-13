@@ -22,7 +22,10 @@ export default function Dashboard() {
       {/* Mobile Phone Container */}
       <div className="w-full max-w-sm relative">
         {/* Phone Frame */}
-        <div className="bg-white rounded-3xl shadow-2xl border-8 border-gray-200 overflow-hidden" style={{ backgroundColor: '#FFF8F0' }}>
+        <div 
+          className={`bg-white rounded-3xl shadow-2xl border-8 border-gray-200 overflow-hidden transition-all duration-300 ${activeModal ? 'blur-sm' : ''}`} 
+          style={{ backgroundColor: '#FFF8F0' }}
+        >
 
           {/* Dashboard Header with Logo and Notification */}
           <div className="bg-white/50 backdrop-blur-xl px-6 py-4 flex items-center justify-center border-b border-white/30 shadow-lg">
