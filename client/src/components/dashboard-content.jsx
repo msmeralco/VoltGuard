@@ -59,17 +59,17 @@ export function DashboardContent({ setActiveModal, activeModal, notifications = 
 
   return (
     <div 
-      className={`bg-white rounded-3xl shadow-2xl border-8 border-gray-200 overflow-hidden transition-all duration-300 ${activeModal ? 'blur-sm' : ''}`} 
+      className={`bg-white h-full flex flex-col shadow-2xl border-8 border-gray-200 md:rounded-3xl overflow-hidden transition-all duration-300 ${activeModal ? 'blur-sm' : ''}`} 
       style={{ backgroundColor: '#FFF8F0' }}
     >
       {/* Dashboard Header with Logo and Notification */}
-      <div className="bg-white/50 backdrop-blur-xl px-6 py-4 flex items-center justify-center border-b border-white/30 shadow-lg">
+      <div className="bg-white/50 backdrop-blur-xl px-6 py-4 flex items-center justify-center border-b border-white/30 shadow-lg flex-shrink-0">
         <img src="/voltguard-logo.png" alt="VoltGuard" className="h-12 object-contain" />
       </div>
 
       {/* Main Content */}
       <div 
-        className="px-6 py-6 space-y-4 overflow-y-auto max-h-[600px] scrollbar-hide"
+        className="px-6 py-6 space-y-4 overflow-y-auto flex-1 scrollbar-hide"
       >
         <div className="grid grid-cols-2 gap-4">
           {/* Streaks Card */}
@@ -117,8 +117,8 @@ export function DashboardContent({ setActiveModal, activeModal, notifications = 
                 </span>
               )}
             </CardHeader>
-            <CardContent className="space-y-3 max-h-64 overflow-y-auto">
-              {alertLogs.slice(0, 3).map((log) => {
+            <CardContent className="space-y-3">
+              {alertLogs.slice(0, 2).map((log) => {
                 const colors = getLevelColor(log.level);
                 return (
                   <div key={log.id} className={`${colors.bg} border-2 ${colors.border} p-3 rounded-lg transition-all`}>
@@ -127,7 +127,11 @@ export function DashboardContent({ setActiveModal, activeModal, notifications = 
                   </div>
                 );
               })}
-              <div className="text-base text-secondary font-semibold">{alertLogs.length} Active Alerts</div>
+              {alertLogs.length > 2 && (
+                <div className="text-sm text-gray-500 text-center">
+                  +{alertLogs.length - 2} more alerts • Click to view all
+                </div>
+              )}
             </CardContent>
           </Card>
         </button>

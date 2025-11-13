@@ -23,12 +23,12 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-[#001f3f] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#001f3f] flex items-center justify-center md:p-4">
       {/* Notification Listener with iPhone-style banners */}
       <NotificationListener onNewNotification={handleNewNotification} />
 
-      {/* Mobile Phone Container */}
-      <div className="w-full max-w-sm relative">
+      {/* Mobile Phone Container - Full screen on mobile, contained on desktop */}
+      <div className="w-full h-screen md:h-auto md:max-w-sm md:rounded-3xl relative overflow-hidden">
         {/* Phone Frame */}
         <DashboardContent 
           setActiveModal={setActiveModal} 
