@@ -2,17 +2,38 @@ import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
-function getEfficiencyLevel(avgConsumption) {
-  if (avgConsumption === 0) return { level: "Starter / New", color: "#FFFFFF" }
-  if (avgConsumption > 80) return { level: "Low Efficiency", color: "#FE8D00" }
-  if (avgConsumption > 60) return { level: "Medium Efficiency", color: "#FFC94A" }
-  if (avgConsumption > 40) return { level: "High Efficiency", color: "#245C94" }
-  return { level: "Perfect Streak", color: "#1C74D9" }
+function getPetLevel(dailyUsageMinutes) {
+  switch (true) {
+    case dailyUsageMinutes === 0:
+      return { 
+        level: "Starter / New", 
+        color: "#FFFFFF",
+        image: "/images/energy-pet-starter.png"
+      }
+    case dailyUsageMinutes > 180: // More than 3 hours
+      return { 
+        level: "Bad", 
+        color: "#FE8D00",
+        image: "/images/energy-pet-bad.png"
+      }
+    case dailyUsageMinutes > 120: // 2-3 hours
+      return { 
+        level: "Medium", 
+        color: "#FFC94A",
+        image: "/images/energy-pet-medium.png"
+      }
+    default: // Less than 2 hours
+      return { 
+        level: "Good", 
+        color: "#245C94",
+        image: "/images/energy-pet-good.png"
+      }
+  }
 }
 
 export function StreaksModal({ onClose }) {
-  const avgConsumption = 35 // This represents the average daily consumption percentage
-  const efficiency = getEfficiencyLevel(avgConsumption)
+  const avgDailyUsage = 90 // Average daily usage in minutes
+  const petStatus = getPetLevel(avgDailyUsage)
 
   return (
     <div className="fixed inset-0 flex items-center justify-center p-4 z-50 animate-in fade-in duration-300">
@@ -30,19 +51,19 @@ export function StreaksModal({ onClose }) {
           <div className="bg-gradient-to-br from-primary/20 to-primary/10 border border-primary/30 rounded-2xl p-4">
             <p className="text-xs text-muted-foreground uppercase tracking-wide">Current Streak</p>
             <p className="text-3xl font-bold text-foreground mt-2">5 Days</p>
-            <p className="text-sm text-muted-foreground mt-1">Below-average consumption</p>
+            <p className="text-sm text-muted-foreground mt-1">Below-average usage time</p>
           </div>
 
           {/* Daily Usage Graph */}
           <div>
-            <p className="text-sm font-semibold text-foreground mb-3">Daily Usage Pattern</p>
+            <p className="text-sm font-semibold text-foreground mb-3">Daily Usage (Minutes)</p>
             <div className="flex items-end gap-1 h-20">
-              {[40, 35, 50, 30, 25, 45, 38].map((height, i) => (
+              {[80, 90, 120, 75, 60, 110, 95].map((height, i) => (
                 <div
                   key={i}
                   className="flex-1 bg-gradient-to-t from-primary to-primary/50 rounded-sm opacity-70 hover:opacity-100 transition-all duration-500 animate-in slide-in-from-bottom"
                   style={{ 
-                    height: `${height}%`,
+                    height: `${(height / 240) * 100}%`, // Scale based on max 4 hours (240 min)
                     animationDelay: `${i * 100}ms`,
                     animationFillMode: 'backwards'
                   }}
@@ -64,29 +85,29 @@ export function StreaksModal({ onClose }) {
                 <div 
                   className="absolute inset-0 opacity-60"
                   style={{
-                    background: `radial-gradient(circle at center, ${efficiency.color} 0%, transparent 70%)`
+                    background: `radial-gradient(circle at center, ${petStatus.color} 0%, transparent 70%)`
                   }}
                 />
                 
                 {/* Pet Image */}
                 <div className="w-48 h-48 relative mb-4 z-10">
                   <img
-                    src="/images/energy-pet.png"
+                    src={petStatus.image}
                     alt="Energy Pet"
                     className="w-full h-full object-contain drop-shadow-lg"
                   />
                 </div>
 
-                {/* Efficiency Level Label */}
+                {/* Pet Level Label */}
                 <div className="bg-card/95 backdrop-blur-sm rounded-full px-6 py-2 border border-border shadow-lg z-10">
-                  <p className="text-sm font-bold text-foreground text-center">{efficiency.level}</p>
+                  <p className="text-sm font-bold text-foreground text-center">{petStatus.level}</p>
                 </div>
               </div>
             </div>
 
-            {/* Efficiency Description */}
+            {/* Usage Description */}
             <p className="text-xs text-muted-foreground text-center mt-3">
-              Keep up your energy-saving habits to reach the next level!
+              Reduce your daily usage time to improve your pet's health!
             </p>
           </div>
         </div>
