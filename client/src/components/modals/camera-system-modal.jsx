@@ -14,11 +14,6 @@ export function CameraSystemModal({ onClose }) {
     { id: "camera-4", name: "Garage", status: "active", resolution: "720p" },
   ]
 
-  const detectedDevices = [
-    { id: "dev-1", name: "Smart Light", type: "Lighting", confidence: 95 },
-    { id: "dev-2", name: "AC Unit", type: "HVAC", confidence: 88 },
-    { id: "dev-3", name: "Refrigerator", type: "Appliance", confidence: 92 },
-  ]
 
   const topAppliance = {
     name: "Air Conditioner",
@@ -59,18 +54,6 @@ export function CameraSystemModal({ onClose }) {
             </div>
           </div>
 
-          {/* Detected Devices Badges */}
-          <div>
-            <p className="text-sm font-semibold text-foreground mb-3">Detected Devices</p>
-            <div className="flex flex-wrap gap-3">
-              {detectedDevices.map((device) => (
-                <Badge key={device.id} className="text-xs bg-primary/10 text-primary border border-primary px-3 py-2">
-                  <span className="font-semibold">{device.name}</span>
-                  <span className="ml-2 opacity-75">({device.confidence}%)</span>
-                </Badge>
-              ))}
-            </div>
-          </div>
 
           {/* Top Appliance by Usage */}
           <div>
