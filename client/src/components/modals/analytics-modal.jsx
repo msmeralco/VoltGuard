@@ -22,16 +22,16 @@ export function AnalyticsModal({ onClose }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-sm bg-card rounded-3xl max-h-[90vh] overflow-y-auto">
+      <Card className="w-full max-w-sm bg-card/95 backdrop-blur-md rounded-3xl max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="sticky top-0 bg-card border-b border-border px-6 py-4 flex items-center justify-between">
+        <div className="bg-card/95 backdrop-blur-md border-b border-border px-6 py-4 flex items-center justify-between flex-shrink-0">
           <h2 className="text-lg font-bold text-foreground">Monthly Analytics</h2>
           <Button variant="ghost" size="icon" onClick={onClose}>
             <X className="w-5 h-5" />
           </Button>
         </div>
 
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-4 overflow-y-auto flex-1">
           {/* Monthly Comparison */}
           <div className="bg-gradient-to-br from-accent/20 to-accent/10 border border-accent/30 rounded-2xl p-4">
             <p className="text-xs text-muted-foreground uppercase tracking-wide">This Month vs Last Month</p>

@@ -28,16 +28,16 @@ export function CameraSystemModal({ onClose }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-sm bg-card rounded-3xl max-h-[90vh] overflow-y-auto">
+      <Card className="w-full max-w-sm bg-card/95 backdrop-blur-md rounded-3xl max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="sticky top-0 bg-card border-b border-border px-6 py-4 flex items-center justify-between">
+        <div className="bg-card/95 backdrop-blur-md border-b border-border px-6 py-4 flex items-center justify-between flex-shrink-0">
           <h2 className="text-lg font-bold text-foreground">System (Camera)</h2>
           <Button variant="ghost" size="icon" onClick={onClose}>
             <X className="w-5 h-5" />
           </Button>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div className="p-6 space-y-6 overflow-y-auto flex-1">
           {/* Live Feed Section */}
           <div>
             <p className="text-sm font-semibold text-foreground mb-3">Live Feed</p>

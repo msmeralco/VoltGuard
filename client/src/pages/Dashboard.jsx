@@ -25,7 +25,7 @@ export default function Dashboard() {
         <div className="bg-white rounded-3xl shadow-2xl border-8 border-gray-200 overflow-hidden">
 
           {/* Dashboard Header with Logo and Notification */}
-          <div className="bg-white px-6 py-4 flex items-center justify-center border-b border-gray-200">
+          <div className="bg-white/80 backdrop-blur-md px-6 py-4 flex items-center justify-center border-b border-gray-200">
             <img src="/voltguard-logo.png" alt="VoltGuard" className="h-12 object-contain" />
           </div>
 

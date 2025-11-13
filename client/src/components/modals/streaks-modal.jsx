@@ -17,7 +17,7 @@ export function StreaksModal({ onClose }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-sm bg-card rounded-3xl max-h-[90vh] flex flex-col overflow-hidden">
+      <Card className="w-full max-w-sm bg-card/95 backdrop-blur-md rounded-3xl max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
         <div className="bg-card border-b border-border px-6 py-4 flex items-center justify-between flex-shrink-0">
           <h2 className="text-lg font-bold text-foreground">Streak History</h2>
